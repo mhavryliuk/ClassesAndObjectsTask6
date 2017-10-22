@@ -30,18 +30,91 @@ namespace ClassesAndObjectsTask6
     {
         // Поля
         int[,] intArray;
+        int n;   // Количество строк 
+        int m;   // Количество столбцов
 
         // Конструктор, позволяющий создать массив размерности n×m.
+        public TwoDimensionalArray(int n, int m)
+        {
+            this.n = n;
+            this.m = m;
+            intArray = new int[n, m];
+        }
 
         // Метод, позволяющий ввести элементы массива с клавиатуры.
+        public void InputIntArray()
+        {
+            Console.WriteLine("Введите элементы массива:");
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < m; j++)
+                {
+                    Console.Write("A[{0}][{1}] = ", i, j);
+                    intArray[i, j] = int.Parse(Console.ReadLine());
+                }
+        }
 
         // Метод, позволяющий вывести элементы массива на экран.
+        public void ShowIntArray()
+        {
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Console.Write("{0} ", intArray[i, j]);
+                }
+                Console.WriteLine();
+            }
+        }
 
         // Метод, позволяющий вычислить сумму элементов i-того столбца.
+        public string CalculatingSumElements(int column)
+        {
+            int sum = 0;
+            if (column <= 0 || column > m)
+            {
+                return $"Столбец {column} не существует. Доступны значения от 1 до {m}.";
+            }
+            else
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    sum += intArray[i, column - 1];   // "column-1", т.к. пользователь считает столбцы с единицы, а не с нуля
+                }
+                return $"Сумма элементов {column} столбца: {sum}";
+            }
+        }
 
         // Свойство, позволяющее вычислить количество нулевых элементов в массиве (доступное только для чтения).
+        public string SearchForZeros
+        {
+            get
+            {
+                int zero = 0;
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < m; j++)
+                    {
+                        if (intArray[i, j] == 0)
+                        {
+                            zero++;
+                        }
+                    }
+                }
+                return $"\nКоличество нулевых элементов массива составлеят: {zero}";
+            }
+        }
 
         // Свойство, позволяющее установить значение всех элементов главной диагонали массива равное скаляру(доступное только для записи).
+        public int MainDiagonal
+        {
+            set
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    intArray[i, i] = value;
+                }
+            }
+        }
 
         // Двумерный индексатор, позволяющий обращаться к соответствующему элементу массива.
 
