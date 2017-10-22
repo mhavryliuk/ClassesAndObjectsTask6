@@ -153,6 +153,23 @@ namespace ClassesAndObjectsTask6
         }
 
         // Перегрузка констант true и false: обращение к экземпляру класса дает значение true, если двумерный массив является квадратным.
+        public static bool operator true(TwoDimensionalArray square)
+        {
+            if (square.n!=square.m)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool operator false(TwoDimensionalArray square)
+        {
+            if (square.n==square.m)
+            {
+                return true;
+            }
+            return false;
+        }
 
         // Перегрузка операции бинарный +: сложить два массива соответствующих размерностей.
 

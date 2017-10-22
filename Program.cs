@@ -28,17 +28,25 @@ namespace ClassesAndObjectsTask6
             array.MainDiagonal = scalar;                             // Замена элементов главной диагонали массива на скаляр
             array.ShowIntArray();                                    // Вывод измененного массива на экран
 
-            Console.WriteLine(array[1,2]);                          // Обращение к элементу массива по индексу
+            Console.WriteLine(array[1,2]);                           // Обращение к элементу массива по индексу
 
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("\nДемонстрация перегрузки операций");
-            Console.ResetColor();
-            Console.WriteLine("Перегрузка операции инкремента");
+            Console.WriteLine("\nПерегрузка операции инкремента");
             ++array;                                                 // Перегрузка операции ++
             array.ShowIntArray();
-            Console.WriteLine("Перегрузка операции декремента");
+
+            Console.WriteLine("\nПерегрузка операции декремента");
             --array;                                                 // Перегрузка операции --
             array.ShowIntArray();
+
+            Console.WriteLine("\nПерегрузка констант true и false");
+            if (array)                                               // Перегрузка констант true и false
+            {
+                Console.WriteLine("Двумерный массив является квадратным");
+            }
+            else
+            {
+                Console.WriteLine("Двумерный массив НЕ является квадратным");
+            }
 
             Console.ReadKey();
         }
