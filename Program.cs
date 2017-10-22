@@ -28,6 +28,18 @@ namespace ClassesAndObjectsTask6
             array.MainDiagonal = scalar;                             // Замена элементов главной диагонали массива на скаляр
             array.ShowIntArray();                                    // Вывод измененного массива на экран
 
+            Console.WriteLine(array[1,2]);                          // Обращение к элементу массива по индексу
+
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("\nДемонстрация перегрузки операций");
+            Console.ResetColor();
+            Console.WriteLine("Перегрузка операции инкремента");
+            ++array;                                                 // Перегрузка операции ++
+            array.ShowIntArray();
+            Console.WriteLine("Перегрузка операции декремента");
+            --array;                                                 // Перегрузка операции --
+            array.ShowIntArray();
+
             Console.ReadKey();
         }
     }

@@ -117,8 +117,40 @@ namespace ClassesAndObjectsTask6
         }
 
         // Двумерный индексатор, позволяющий обращаться к соответствующему элементу массива.
+        public string this[int index1, int index2]
+        {
+            get
+            {
+                if (index1 < 0 || index1 > intArray.GetLength(0) - 1 && index2 < 0 || index2 > intArray.GetLength(1) - 1)
+                {
+                    return $"\nИндекс [{index1},{index2}] является недопустимым.";
+                }
+                return $"\nИндексу [{index1},{index2}] соответствует элемент со значением {intArray[index1, index2]}";
+            }
+        }
 
         // Перегрузка операции ++ (--): одновременно увеличивает(уменьшает) значение всех элементов массива на 1.
+        public static TwoDimensionalArray operator ++(TwoDimensionalArray increment)
+        {
+            TwoDimensionalArray array = new TwoDimensionalArray(increment.intArray.GetLength(0), increment.intArray.GetLength(1));
+            for (int i = 0; i < increment.intArray.GetLength(0); i++)
+                for (int j = 0; j < increment.intArray.GetLength(1); j++)
+                {
+                    increment.intArray[i, j]++;
+                }
+            return increment;
+        }
+
+        public static TwoDimensionalArray operator --(TwoDimensionalArray decrement)
+        {
+            TwoDimensionalArray array = new TwoDimensionalArray(decrement.intArray.GetLength(0), decrement.intArray.GetLength(1));
+            for (int i = 0; i < decrement.intArray.GetLength(0); i++)
+                for (int j = 0; j < decrement.intArray.GetLength(1); j++)
+                {
+                    decrement.intArray[i, j]--;
+                }
+            return decrement;
+        }
 
         // Перегрузка констант true и false: обращение к экземпляру класса дает значение true, если двумерный массив является квадратным.
 
